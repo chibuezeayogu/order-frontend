@@ -15,7 +15,7 @@ Order Frontend is an order management app with minimal functionality. It allows 
   - [NodeJs](https://nodejs.org/en/download/)
   - [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
 - Open any terminal of your choice and clone this project repository using the command `git clone git@github.com:chibuezeayogu/order-frontend.git`
-- cd into the cloned project directory using the command `cd pan-frontend/`.
+- cd into the cloned project directory using the command `cd order-frontend/`.
 - Install project dependencies using the command `yarn install`
 - Run the application using `yarn start`
 
