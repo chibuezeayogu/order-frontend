@@ -11,7 +11,6 @@ import formatDate from '../../utils/formatDate'
 const OrderDetails = props => {
   const dispatch = useDispatch()
   const { order, isFetching } = useSelector(({ ordersReducer }) => ordersReducer)
-  console.log({ order, isFetching })
 
   useEffect(() => {
     const { id } = props.match.params

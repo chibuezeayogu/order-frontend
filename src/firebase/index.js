@@ -33,6 +33,9 @@ class FirebaseAuthService {
       return [error]
     }
   }
+
+  onAuthStateChanged = async() => this.firebase.auth().onAuthStateChanged;
+  auth = () => this.firebase.auth();
 }
 
 export default new FirebaseAuthService()

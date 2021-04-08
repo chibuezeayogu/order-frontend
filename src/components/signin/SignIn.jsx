@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { isAuthenticating, login } from '../../actions/userActions'
+import { login } from '../../actions/userActions'
 import useFormInput from '../../utils/customReactHooks'
 import TextInput from '../common/TestInput'
 import PasswordInput from '../common/PasswordInput'
@@ -11,14 +11,14 @@ const SignIn = ({ history }) => {
   const email = useFormInput('')
   const password = useFormInput('')
   const dispatch = useDispatch()
-  const isLoading = useSelector(({ userReducer }) => userReducer.isAuthenticating)
-  const [loading, setLaoding] = useState(false)
+  const { error, isAuthenticating } = useSelector(({ userReducer }) => userReducer)
+  const [errors, setErrors] = useState('')
 
   useEffect(() => {
-    if (isLoading) {
-      setLaoding(isAuthenticating)
+    if (error) {
+      setErrors(error)
     }
-  }, [loading])
+  }, [error])
 
   const handleSign = async event => {
     event.preventDefault()
@@ -48,8 +48,9 @@ const SignIn = ({ history }) => {
                   <PasswordInput {...password} />
                 </div>
                 <div className="form-group">
-                  <ButtonWithLoading text="Login" loading={loading} />
+                  <ButtonWithLoading text="Login" loading={isAuthenticating} />
                 </div>
+                {errors && <span>errors</span>}
               </form>
             </div>
           </div>
