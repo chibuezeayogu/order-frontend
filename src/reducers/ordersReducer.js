@@ -3,6 +3,7 @@ import actionTypes from '../actions/actionTypes'
 const initialState = {
   isFetching: false,
   orders: [],
+  order: {},
   error: ''
 }
 
@@ -14,6 +15,16 @@ const ordersReducer = (state = initialState, action) => {
         orders: action.payload
       }
     case actionTypes.FETCH_ORDERS_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      }
+    case actionTypes.FETCH_ORDER_SUCCESS:
+      return {
+        ...state,
+        order: action.payload
+      }
+    case actionTypes.FETCH_ORDER_ERROR:
       return {
         ...state,
         error: action.payload

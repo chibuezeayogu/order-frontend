@@ -18,6 +18,16 @@ export const fetchOrdersError = error => ({
   payload: error
 })
 
+export const fetchOrderSuccess = orders => ({
+  type: actionTypes.FETCH_ORDERS_SUCCESS,
+  payload: orders
+})
+
+export const fetchOrderError = error => ({
+  type: actionTypes.FETCH_ORDERS_ERROR,
+  payload: error
+})
+
 export const fetchOrders = () => {
   return async dispatch => {
     try {
@@ -26,6 +36,19 @@ export const fetchOrders = () => {
       dispatch(fetchOrdersSuccess(data.data))
     } catch (error) {
       dispatch(fetchOrdersError(error))
+    }
+    dispatch(isFetching(false))
+  }
+}
+
+export const fetchOrder = uid => {
+  return async dispatch => {
+    try {
+      dispatch(isFetching(true))
+      const { data } = await axios.get(`${baseURl}/orders/${uid}`)
+      dispatch(fetchOrdersSuccess(data))
+    } catch (error) {
+      dispatch(fetchOrderError(error))
     }
     dispatch(isFetching(false))
   }
