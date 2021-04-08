@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextInput = ({ value, onChange }) => {
+const TextInput = ({ value, onChange, text }) => {
   return (
     <input
       type="text"
@@ -8,7 +8,7 @@ const TextInput = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
       id="email"
-      placeholder="Email"
+      placeholder={text}
     />
   )
 }

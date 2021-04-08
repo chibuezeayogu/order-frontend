@@ -1,4 +1,4 @@
-.order-details {
+.create-order, .edit-order {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -26,6 +26,8 @@
     text-align: center;
   }
 }
+
+
 .title {
   margin:  0 20px;
   text-align: center;
@@ -38,14 +40,41 @@
     text-align: center;
 }
 
-.edit-btn {
+.create-btn {
+  display: flex;
   justify-content: center;
-  margin-bottom: 40px;
   margin-bottom: 40px;
 
   a, button {
     width: 20%;
     background-color: #344763;
+    margin: 0 10px;
     
   }
 }
+
+form.form-control {
+  background-color: unset;
+}
+
+  .form-control:focus, .form-control:active {
+    outline: none !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #1089ff; 
+  }
+
+  // .btn {
+  //   cursor: pointer;
+  //   border-radius: 40px;
+  //   -webkit-box-shadow: none !important;
+  //   box-shadow: none !important;
+  //   font-size: 15px; 
+  // }
+
+  // .btn.btn-primary {
+  //   background: #1089ff !important;
+  //   border: 1px solid #1089ff !important;
+  //   color: #fff !important; 
+  // }
+// }

@@ -1,16 +1,21 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { fetchOrder } from '../../actions/ordersAction'
 import Loader from '../common/Loader'
 import Header from '../common/Header'
+import formatDate from '../../utils/formatDate'
 
 const OrderDetails = props => {
   const dispatch = useDispatch()
   const { order, isFetching } = useSelector(({ ordersReducer }) => ordersReducer)
+  console.log({ order, isFetching })
 
   useEffect(() => {
-    dispatch(fetchOrder())
+    const { id } = props.match.params
+    dispatch(fetchOrder(id))
   }, [dispatch])
 
   return (
@@ -27,26 +32,26 @@ const OrderDetails = props => {
             <tbody>
               <tr>
                 <th>Title</th>
-                <td>{order.title}</td>
+                <td>{order?.title}</td>
               </tr>
               <tr>
                 <th>Booking Date</th>
-                <td>{order.title}</td>
+                <td>{formatDate(order?.bookingDate)}</td>
               </tr>
               <tr>
                 <th>Address</th>
                 <td>
-                  <p className="center-table-content">{order.street}</p>
-                    <p className="center-table-content">{order.city}</p>
-                  <p className="center-table-content">{order.cuntry}</p>
+                  <p className="center-table-content">{order?.address?.street}</p>
+                  <p className="center-table-content">{order?.address?.city}</p>
+                  <p className="center-table-content">{order?.address?.country}</p>
                 </td>
               </tr>
               <tr>
                 <th>Customer</th>
                 <td>
-                  <p className="center-table-content">{order.name}</p>
-                  <p className="center-table-content">{order.email}</p>
-                  <p className="center-table-content">{order.phone}</p>
+                  <p className="center-table-content">{order?.customer?.name}</p>
+                  <p className="center-table-content">{order?.customer?.email}</p>
+                  <p className="center-table-content">{order?.customer?.phone}</p>
                 </td>
               </tr>
             </tbody>
@@ -54,9 +59,9 @@ const OrderDetails = props => {
         )}
       </div>
       <div className="row edit-btn">
-        <button type="button" className="btn btn-primary">
+        <Link to={`/orders/${order.uid}/edit`} className="btn btn-primary">
           Edit
-        </button>
+        </Link>
       </div>
     </div>
   )

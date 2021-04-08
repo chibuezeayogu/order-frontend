@@ -18,17 +18,17 @@ export const loginError = error => ({
 })
 
 export const isSigningOut = value => ({
-  type: actionTypes.SIGN_OUT,
+  type: actionTypes.SIGNING_OUT,
   payload: value
 })
 
-export const signOutSuccess = user => ({
-  type: actionTypes.SIGN_IN_SUCCESS,
-  payload: user
+export const signOutSuccess = () => ({
+  type: actionTypes.SIGN_OUT_SUCCESS,
+  payload: {}
 })
 
 export const signOutError = error => ({
-  type: actionTypes.SIGN_IN_ERROR,
+  type: actionTypes.SIGN_OUT_ERROR,
   payload: error.message
 })
 
