@@ -1,4 +1,3 @@
-// require('dotenv').config();
 import actionTypes from './actionTypes'
 // eslint-disable-next-line import/no-named-as-default
 import firebaseAuthService from '../firebase/index'
@@ -30,7 +29,7 @@ export const signOutSuccess = user => ({
 
 export const signOutError = error => ({
   type: actionTypes.SIGN_IN_ERROR,
-  payload: error
+  payload: error.message
 })
 
 export const login = (email, password, history) => {
@@ -49,9 +48,9 @@ export const login = (email, password, history) => {
       dispatch(loginError(error))
     } else {
       dispatch(loginSuccess(userCredentials.user))
-      dispatch(isAuthenticating(false))
       history.push('/orders')
     }
+    dispatch(isAuthenticating(false))
   }
 }
 
@@ -59,13 +58,12 @@ export const signOut = history => {
   return async dispatch => {
     dispatch(isSigningOut(true))
     const [error] = await firebaseAuthService.signOut()
-
     if (error) {
-      dispatch(loginError(error))
+      dispatch(signOutError(error))
     } else {
       dispatch(signOutSuccess())
-      dispatch(isSigningOut(false))
-      dispatch(history.push('/login'))
+      history.push('/login')
     }
+    dispatch(isSigningOut(false))
   }
 }
