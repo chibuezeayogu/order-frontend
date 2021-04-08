@@ -10,7 +10,6 @@ class FirebaseAuthService {
   }
 
   signInWithEmailAndPassword = async (email, password) => {
-    console.log(process.env.API_KEY);
     try {
       const userCredential = await this
         .firebase

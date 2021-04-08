@@ -37,12 +37,12 @@ const SignIn = ({ history }) => {
           <div className="col-md-7 col-lg-5">
             <div className="login-wrap p-4 p-md-5">
               <div className="icon d-flex align-items-center justify-content-center">
-                <span className="fa fa-user-o" />
+                <i className="fa fa-user-o" />
               </div>
               <h3 className="text-center mb-4">Sign In</h3>
               <form onSubmit={handleSign} className="login-form">
                 <div className="form-group">
-                  <TextInput {...email} />
+                  <TextInput {...email} text="Email" />
                 </div>
                 <div className="form-group d-flex">
                   <PasswordInput {...password} />

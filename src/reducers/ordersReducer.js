@@ -29,6 +29,16 @@ const ordersReducer = (state = initialState, action) => {
         ...state,
         error: action.payload
       }
+    case actionTypes.UPDATE_ORDER_SUCCESS:
+      return {
+        ...state,
+        order: action.payload
+      }
+    case actionTypes.UPDATE_ORDER_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      }
     case actionTypes.FETCH_ORDERS:
       return {
         ...state,

@@ -28,7 +28,7 @@ const Header = ({ history }) => {
         <button
           type="button"
           onClick={() => dispatch(signOut(history))}
-          className="btn btn-danger"
+          className="btn logout"
         >
           Logout
         </button>

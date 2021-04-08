@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchOrders } from '../../actions/ordersAction'
-import boookingDateFormat from '../../utils/formatBookingDate'
+import formatDate from '../../utils/formatDate'
 import Loader from '../common/Loader'
 import Header from '../common/Header'
 
@@ -18,22 +19,25 @@ const OrdersList = props => {
   return (
     <div className="container">
       <Header {...props} />
-      {isFetching ? (
+      {isFetching || orders.length === 0 ? (
         <Loader />
       ) : (
         <table className="table table-striped table-hover table-responsive">
           <thead>
             <tr>
-              <th scope="col" className="col=4">
+              <th scope="col" className="col-1 text-center">
+                S/N
+              </th>
+              <th scope="col" className="col-4 text-center">
                 Title
               </th>
-              <th scope="col" className="col=4">
+              <th scope="col" className="col-2 text-center">
                 Booking Date
               </th>
-              <th scope="col" className="col=4">
+              <th scope="col" className="col-4 text-center">
                 Address
               </th>
-              <th scope="col" className="col=4">
+              <th scope="col" className="col-4 text-center">
                 Customer
               </th>
             </tr>
@@ -43,10 +47,15 @@ const OrdersList = props => {
               orders.map((order, index) => {
                 return (
                   <tr key={index}>
-                    <th>{order?.title}</th>
-                    <td>{boookingDateFormat(order.bookingDate)}</td>
-                    <td>{order?.address?.street}</td>
-                    <td>{order?.customer?.name}</td>
+                    <th className="text-center">{index + 1}</th>
+                    <th className="text-center">
+                      <Link to={`/orders/${order.uid}`} className="title-link">
+                        {order.title}
+                      </Link>
+                    </th>
+                    <td className="text-center">{formatDate(order.bookingDate)}</td>
+                    <td className="text-center">{order.address?.street}</td>
+                    <td className="text-center">{order.customer?.name}</td>
                   </tr>
                 )
               })}
