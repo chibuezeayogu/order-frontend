@@ -15,13 +15,15 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.payload,
-        isAuthenticated: !isEmpty(action.payload)
+        isAuthenticated: !isEmpty(action.payload),
+        isAuthenticating: false
       }
     case actionTypes.SIGN_OUT_SUCCESS:
       return {
         ...state,
         currentUser: {},
-        isAuthenticated: false
+        isAuthenticated: false,
+        isAuthenticating: false
       }
     case actionTypes.SIGN_IN_ERROR:
       return {

@@ -10,10 +10,13 @@ import TextInput from '../common/TestInput'
 import Header from '../common/Header'
 import Loader from '../common/Loader'
 import formatDate from '../../utils/formatDate'
+import ButtonWithLoading from '../common/ButtonWithLoading'
 
 const EditOrder = props => {
   const dispatch = useDispatch()
-  const { order, isFetching } = useSelector(({ ordersReducer }) => ordersReducer)
+  const { order, isFetching, isUpdating } = useSelector(
+    ({ ordersReducer }) => ordersReducer
+  )
   const title = useFormInput(order.title)
   const bookingDate = useFormInput(order.bookingDate)
   const { id } = props.match.params
@@ -89,9 +92,7 @@ const EditOrder = props => {
             <Link to={`/orders/${order.uid}`} className="btn btn-primary">
               Cancel
             </Link>
-            <button type="submit" className="btn btn-primary">
-              Update
-            </button>
+            <ButtonWithLoading text="Update" loading={isUpdating} />
           </div>
         </form>
       )}

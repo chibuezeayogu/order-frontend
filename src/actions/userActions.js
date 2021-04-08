@@ -1,6 +1,9 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-cycle */
 import actionTypes from './actionTypes'
 // eslint-disable-next-line import/no-named-as-default
 import firebaseAuthService from '../firebase/index'
+import { setLocalStorage } from '../helpers/auth'
 
 export const isAuthenticating = value => ({
   type: actionTypes.SIGNING_IN,
@@ -48,9 +51,9 @@ export const login = (email, password, history) => {
       dispatch(loginError(error))
     } else {
       dispatch(loginSuccess(userCredentials.user))
+      setLocalStorage(userCredentials.user)
       history.push('/orders')
     }
-    dispatch(isAuthenticating(false))
   }
 }
 
@@ -63,7 +66,7 @@ export const signOut = history => {
     } else {
       dispatch(signOutSuccess())
       history.push('/login')
+      localStorage.removeItem('token')
     }
-    dispatch(isSigningOut(false))
   }
 }

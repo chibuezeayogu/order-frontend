@@ -4,13 +4,14 @@ import SignIn from '../components/signin/SignIn'
 import OrdersList from '../components/orders/OrdersList'
 import OrderDetails from '../components/orders/OrderDetails'
 import EditOrder from '../components/orders/EditOrder'
+import { Auth } from '../helpers/auth'
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/login" component={SignIn} />
-    <Route exact path="/orders" component={OrdersList} />
-    <Route exact path="/orders/:id" component={OrderDetails} />
-    <Route exact path="/orders/:id/edit" component={EditOrder} />
+    <Route exact path="/login" component={Auth(SignIn)} />
+    <Route exact path="/orders" component={Auth(OrdersList)} />
+    <Route exact path="/orders/:id" component={Auth(OrderDetails)} />
+    <Route exact path="/orders/:id/edit" component={Auth(EditOrder)} />
   </Switch>
 )
 
