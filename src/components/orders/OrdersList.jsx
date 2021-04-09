@@ -28,6 +28,9 @@ const OrdersList = props => {
   return (
     <div className="container">
       <Header {...props} />
+      <div className="row title mb-5">
+        <h2>Orders</h2>
+      </div>
       {isFetching ? <Loader /> : <OrdersTable currentOrders={currentOrders} />}
       <Pagination
         ordersPerPage={ordersPerPage}

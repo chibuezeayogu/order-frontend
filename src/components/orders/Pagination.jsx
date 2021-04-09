@@ -10,7 +10,7 @@ const Pagination = ({ ordersPerPage, totalOrders, paginate }) => {
 
   return (
     <nav aria-label="Page navigation">
-      <ul className="pagination justify-content-center">
+      <ul className="pagination justify-content-center mb-5">
         {pageNumers.map(num => {
           return (
             <li className="page-item" key={num}>

@@ -25,7 +25,8 @@ const EditOrder = props => {
     dispatch(fetchOrder(id))
   }, [dispatch])
 
-  const handelSubmit = () => {
+  const handelSubmit = (event) => {
+    event.preventDefault()
     dispatch(updateOrder(id, title.value, formatDate(bookingDate), props.history))
   }
 
