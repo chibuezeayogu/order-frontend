@@ -11,11 +11,11 @@ import formatDate from '../../utils/formatDate'
 const OrderDetails = props => {
   const dispatch = useDispatch()
   const { order, isFetching } = useSelector(({ ordersReducer }) => ordersReducer)
+  const { id } = props.match.params
 
   useEffect(() => {
-    const { id } = props.match.params
     dispatch(fetchOrder(id))
-  }, [dispatch])
+  }, [])
 
   return (
     <div className="container">

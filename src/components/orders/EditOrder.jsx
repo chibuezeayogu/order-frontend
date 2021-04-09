@@ -1,5 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -25,7 +23,7 @@ const EditOrder = props => {
     dispatch(fetchOrder(id))
   }, [dispatch])
 
-  const handelSubmit = (event) => {
+  const handelSubmit = event => {
     event.preventDefault()
     dispatch(updateOrder(id, title.value, formatDate(bookingDate), props.history))
   }

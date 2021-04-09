@@ -3,6 +3,7 @@ import actionTypes from '../actions/actionTypes'
 const initialState = {
   isFetching: false,
   isUpdating: false,
+  isCreating: false,
   orders: [],
   order: {},
   error: ''
@@ -30,16 +31,16 @@ const ordersReducer = (state = initialState, action) => {
         isFetching: false
       }
     case actionTypes.UPDATE_ORDER_SUCCESS:
+    case actionTypes.CREATE_ORDER_SUCCESS:
       return {
         ...state,
-        order: action.payload,
-        isUpdating: false
+        order: action.payload
       }
     case actionTypes.UPDATE_ORDER_ERROR:
+    case actionTypes.CREATE_ORDER_ERROR:
       return {
         ...state,
-        error: action.payload,
-        isUpdating: false
+        error: action.payload
       }
     case actionTypes.FETCH_ORDERS:
     case actionTypes.FETCH_ORDER:
@@ -51,6 +52,11 @@ const ordersReducer = (state = initialState, action) => {
       return {
         ...state,
         isUpdating: action.payload
+      }
+    case actionTypes.CREATE_ORDER:
+      return {
+        ...state,
+        isCreating: action.payload
       }
     default:
       return state
