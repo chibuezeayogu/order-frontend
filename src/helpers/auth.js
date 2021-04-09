@@ -8,6 +8,7 @@
 /* eslint-disable no-multi-assign */
 /* eslint-disable no-undef */
 import React from 'react'
+import axios from 'axios'
 import firbaseSevice from '../firebase/index'
 import store from '../store/index'
 import { isAuthenticating, loginSuccess } from '../actions/userActions'
@@ -49,12 +50,14 @@ export const setLocalStorage = async user => {
   localStorage.setItem('token', idToken)
 }
 
-export const setHeader = () => ({
-  headers: {
-    'x-access-token': localStorage.getItem('token'),
-    authorization: localStorage.getItem('token')
+export const setAuthorizationToken = () => {
+  const token = localStorage.getItem('token')
+  if (token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`
+  } else {
+    delete axios.defaults.headers.common.Authorization
   }
-})
+}
 
 // export const ProtectedRoute = ({ isAuth, component: Component, ...rest }) =>
 //   <Route
