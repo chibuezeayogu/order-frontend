@@ -3,7 +3,7 @@ Order Frontend is an order management app with minimal functionality. It allows 
 
 ## Features
 - Add to Order
-- View All
+- View All With Pagination
 - View One
 - Update
 
@@ -17,6 +17,7 @@ Order Frontend is an order management app with minimal functionality. It allows 
 - Open any terminal of your choice and clone this project repository using the command `git clone git@github.com:chibuezeayogu/order-frontend.git`
 - cd into the cloned project directory using the command `cd order-frontend/`.
 - Install project dependencies using the command `yarn install`
+- Create .env file and copy content of .env.sample to it and provide the appropriate values specified.
 - Run the application using `yarn start`
 
 ## Technologies

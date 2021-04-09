@@ -20,10 +20,10 @@ export const Auth = Component => props => {
     return props.history.push('/orders')
   }
 
-  if (!localStorage.getItem('token') && pathname !== '/login') {
-    localStorage.removeItem('token')
-    return props.history.push('/login')
-  }
+  // if (!localStorage.getItem('token') && pathname !== '/login') {
+  //   localStorage.removeItem('token')
+  //   return props.history.push('/login')
+  // }
 
   return <Component {...props} />
 }

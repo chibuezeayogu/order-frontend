@@ -15,12 +15,12 @@ body {
   }
 }
 
-.logout { 
-  background-color: #344763;
-  color: white;
+.logout, .btn-loading { 
+  background-color: #344763 !important;
+  color: white !important;
 }
 
-.table-title{
+.table-title {
   width: 35%;
 }
 
