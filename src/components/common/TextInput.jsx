@@ -7,7 +7,7 @@ const TextInput = ({ value, onChange, text }) => {
       className="form-control rounded-left"
       value={value}
       onChange={onChange}
-      id="email"
+      id={text}
       placeholder={text}
     />
   )
