@@ -30,7 +30,8 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: false,
         currentUser: {},
-        error: action.error.message
+        error: action.error.message,
+        isAuthenticating: false
       }
     case actionTypes.SIGN_OUT_ERROR:
       return {

@@ -3,7 +3,7 @@ import React from 'react'
 const ButtonWithLoading = ({ text, loading }) => {
   return (
     <button
-      className="form-control btn btn-primary rounded submit px-3"
+      className="form-control btn rounded submit px-3 btn-loading"
       type="submit"
       disabled={loading}
     >

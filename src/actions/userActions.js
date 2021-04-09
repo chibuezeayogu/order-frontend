@@ -65,8 +65,8 @@ export const signOut = history => {
       dispatch(signOutError(error))
     } else {
       dispatch(signOutSuccess())
-      history.push('/login')
       localStorage.removeItem('token')
+      history.push('/login')
     }
   }
 }
