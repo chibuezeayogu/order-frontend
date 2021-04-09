@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import formatDate from '../../utils/formatDate'
 
-const OrdersTable = ({ currentOrders }) => {
+const OrdersTable = ({ currentOrders, count }) => {
   return (
     <table className="table table-striped table-hover table-responsive">
       <thead>
@@ -11,13 +11,13 @@ const OrdersTable = ({ currentOrders }) => {
           <th scope="col" className="col-1 text-center">
             S/N
           </th>
-          <th scope="col" className="col-4 text-center">
+          <th scope="col" className="col-3 text-center">
             Title
           </th>
           <th scope="col" className="col-2 text-center">
             Booking Date
           </th>
-          <th scope="col" className="col-4 text-center">
+          <th scope="col" className="col-3 text-center">
             Address
           </th>
           <th scope="col" className="col-4 text-center">
@@ -28,7 +28,7 @@ const OrdersTable = ({ currentOrders }) => {
       <tbody>
         {currentOrders.map((order, index) => (
           <tr key={index + 1}>
-            <th className="text-center">{index + 1}</th>
+            <th className="text-center">{(index + count + 1)}</th>
             <th className="text-center">
               <Link to={`/orders/${order.uid}`} className="title-link">
                 {order.title}

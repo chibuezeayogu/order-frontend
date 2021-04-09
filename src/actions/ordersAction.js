@@ -44,6 +44,21 @@ export const updateError = error => ({
   payload: error.message
 })
 
+export const isCreating = value => ({
+  type: actionTypes.CREATE_ORDER,
+  payload: value
+})
+
+export const createSuccess = order => ({
+  type: actionTypes.CREATE_ORDER_SUCCESS,
+  payload: order
+})
+
+export const createError = error => ({
+  type: actionTypes.CREATE_ORDER_ERROR,
+  payload: error.message
+})
+
 export const fetchOrders = () => {
   return async dispatch => {
     setAuthorizationToken()
@@ -83,6 +98,21 @@ export const updateOrder = (uid, title, bookingDate, history) => {
       history.push(`/orders/${uid}`)
     } catch (error) {
       dispatch(updateError(error))
+    }
+  }
+}
+
+export const createOrder = (values, history) => {
+  return async dispatch => {
+    setAuthorizationToken()
+    try {
+      dispatch(isCreating(true))
+      const { data } = await axios.post(`${baseURl}/orders/`, { ...values })
+      dispatch(createSuccess(data.data))
+      history.push(`/orders/${data.data.uid}`)
+    } catch (error) {
+      console.log({ error })
+      dispatch(createError(error))
     }
   }
 }

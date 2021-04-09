@@ -15,7 +15,10 @@ const Header = ({ history }) => {
         </li>
       </ul>
 
-      <div className="col-md-3 text-end">
+      <div className="col-md-4 text-end">
+        <Link to="/orders/create" className="btn px-2 logout mx-2">
+          Create
+        </Link>
         <button
           type="button"
           onClick={() => dispatch(signOut(history))}

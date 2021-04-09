@@ -1,9 +1,9 @@
 import React from 'react'
 
-const TextInput = ({ value, onChange, text }) => {
+const DateInput = ({ value, onChange, text }) => {
   return (
     <input
-      type="text"
+      type="date"
       className="form-control rounded-left"
       value={value}
       onChange={onChange}
@@ -14,4 +14,4 @@ const TextInput = ({ value, onChange, text }) => {
   )
 }
 
-export default TextInput
+export default DateInput
