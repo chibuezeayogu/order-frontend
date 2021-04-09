@@ -18,7 +18,7 @@ Order Frontend is an order management app with minimal functionality. It allows 
 - cd into the cloned project directory using the command `cd order-frontend/`.
 - Install project dependencies using the command `yarn install`
 - Create .env file and copy content of .env.sample to it and provide the appropriate values specified.
-- Run the application using `yarn start`
+- Run the application using `yarn dev`
 
 ## Technologies
 - ECMAScript 6: This is the newest version of JavsScript with new features such as arrow functions, spread and rest operators and many more.
