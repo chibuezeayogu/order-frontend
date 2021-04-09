@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../actions/userActions'
 import useFormInput from '../../utils/customReactHooks'
-import TextInput from '../common/TestInput'
+import TextInput from '../common/TextInput'
 import PasswordInput from '../common/PasswordInput'
 import ButtonWithLoading from '../common/ButtonWithLoading'
 
