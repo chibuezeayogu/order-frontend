@@ -14,7 +14,7 @@ const OrderDetails = props => {
   const { id } = props.match.params
 
   useEffect(() => {
-    dispatch(fetchOrder(id))
+    dispatch(fetchOrder(id, props.history))
   }, [])
 
   return (

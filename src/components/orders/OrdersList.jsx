@@ -14,7 +14,7 @@ const OrdersList = props => {
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    dispatch(fetchOrders())
+    dispatch(fetchOrders(props.history))
   }, [dispatch])
 
   const indexOfLastPage = currentPage * ordersPerPage
@@ -37,6 +37,7 @@ const OrdersList = props => {
             ordersPerPage={ordersPerPage}
             totalOrders={orders.length}
             paginate={paginate}
+            currentPage={currentPage}
           />
         </>
       )}

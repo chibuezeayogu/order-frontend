@@ -23,6 +23,7 @@
       "react/destructuring-assignment": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
-      "react/no-array-index-key": "off"
+      "react/no-array-index-key": "off",
+      "no-multi-assign": "off"
     }
 }
