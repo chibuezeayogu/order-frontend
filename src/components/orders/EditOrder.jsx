@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchOrder, updateOrder } from '../../actions/ordersAction'
 import useFormInput from '../../utils/customReactHooks'
 import TextInput from '../common/TextInput'
+import DateInput from '../common/DateInput'
 import Header from '../common/Header'
 import Loader from '../common/Loader'
-import formatDate from '../../utils/formatDate'
 import ButtonWithLoading from '../common/ButtonWithLoading'
 
 const EditOrder = props => {
@@ -25,7 +25,7 @@ const EditOrder = props => {
 
   const handelSubmit = event => {
     event.preventDefault()
-    dispatch(updateOrder(id, title.value, formatDate(bookingDate), props.history))
+    dispatch(updateOrder(id, title.value, bookingDate.value, props.history))
   }
 
   return (
@@ -57,11 +57,8 @@ const EditOrder = props => {
                   <th>Booking Date</th>
                   <td>
                     <div className="form-group">
-                      <TextInput
-                        value={
-                          formatDate(bookingDate.value) ||
-                          formatDate(order.bookingDate)
-                        }
+                      <DateInput
+                        value={bookingDate.value}
                         onChange={bookingDate.onChange}
                         text="BookingDate"
                       />

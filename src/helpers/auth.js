@@ -1,13 +1,10 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-no-undef */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-multi-assign */
 /* eslint-disable no-undef */
-import React from 'react'
+import React, { useEffect } from 'react'
+import { notify } from 'react-notify-toast'
 import axios from 'axios'
 import firbaseSevice from '../firebase/index'
 import store from '../store/index'
@@ -16,14 +13,16 @@ import { isAuthenticating, loginSuccess } from '../actions/userActions'
 export const Auth = Component => props => {
   const { pathname } = props.history.location
 
-  if (localStorage.getItem('token') && pathname === '/login') {
-    return props.history.push('/orders')
-  }
+  useEffect(() => {
+    if (localStorage.getItem('token') && pathname === '/login') {
+      props.history.push('/orders')
+    }
 
-  if (!localStorage.getItem('token') && pathname !== '/login') {
-    localStorage.removeItem('token')
-    return props.history.push('/login')
-  }
+    if (!localStorage.getItem('token') && pathname !== '/login') {
+      localStorage.removeItem('token')
+      props.history.push('/login')
+    }
+  }, [])
 
   return <Component {...props} />
 }
@@ -59,15 +58,7 @@ export const setAuthorizationToken = () => {
   }
 }
 
-// export const ProtectedRoute = ({ isAuth, component: Component, ...rest }) =>
-//   <Route
-//     {...rest}
-//     render={props => {
-//       if (isAuth) {
-//         return <Component />
-//       }
-//       return (
-//         <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-//       )
-//     }}
-//   />
+export const toastMessage = () => {
+  localStorage.removeItem('token')
+  return notify.show('Token expired. Please login to continue', 'error')
+}

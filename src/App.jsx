@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+import Notifications from 'react-notify-toast'
 import './assests/scss/index.scss'
 import store from './store/index'
 import Routes from './routes/index'
@@ -13,6 +14,7 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Routes />
+        <Notifications />
       </BrowserRouter>
     </Provider>
   )

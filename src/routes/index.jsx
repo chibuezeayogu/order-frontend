@@ -5,15 +5,15 @@ import OrdersList from '../components/orders/OrdersList'
 import OrderDetails from '../components/orders/OrderDetails'
 import EditOrder from '../components/orders/EditOrder'
 import CreateOrder from '../components/orders/CreateOrder'
-// import { Auth } from '../helpers/auth'
+import { Auth } from '../helpers/auth'
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/login" component={SignIn} />
-    <Route exact path="/orders" component={OrdersList} />
-    <Route exact path="/orders/create" component={CreateOrder} />
-    <Route exact path="/orders/:id" component={OrderDetails} />
-    <Route exact path="/orders/:id/edit" component={EditOrder} />
+    <Route exact path="/login" component={Auth(SignIn)} />
+    <Route exact path="/orders" component={Auth(OrdersList)} />
+    <Route exact path="/orders/create" component={Auth(CreateOrder)} />
+    <Route exact path="/orders/:id" component={Auth(OrderDetails)} />
+    <Route exact path="/orders/:id/edit" component={Auth(EditOrder)} />
   </Switch>
 )
 

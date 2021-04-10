@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { notify } from 'react-notify-toast'
 import actionTypes from './actionTypes'
-import { setAuthorizationToken } from '../helpers/auth'
+import { setAuthorizationToken, toastMessage } from '../helpers/auth'
 
 const baseURl = process.env.BASE_URL
 
@@ -59,7 +60,7 @@ export const createError = error => ({
   payload: error.message
 })
 
-export const fetchOrders = () => {
+export const fetchOrders = history => {
   return async dispatch => {
     setAuthorizationToken()
     try {
@@ -68,11 +69,15 @@ export const fetchOrders = () => {
       dispatch(fetchOrdersSuccess(data.data))
     } catch (error) {
       dispatch(fetchOrdersError(error))
+      if (error.response.status === 401) {
+        toastMessage()
+        history.push('/login')
+      }
     }
   }
 }
 
-export const fetchOrder = uid => {
+export const fetchOrder = (uid, history) => {
   return async dispatch => {
     setAuthorizationToken()
     try {
@@ -81,6 +86,10 @@ export const fetchOrder = uid => {
       dispatch(fetchOrderSuccess(data.data))
     } catch (error) {
       dispatch(fetchOrderError(error))
+      if (error.response.status === 401) {
+        toastMessage()
+        history.push('/login')
+      }
     }
   }
 }
@@ -96,8 +105,14 @@ export const updateOrder = (uid, title, bookingDate, history) => {
       })
       dispatch(updateSuccess(data.data))
       history.push(`/orders/${uid}`)
+      dispatch(isUpdating(false))
     } catch (error) {
       dispatch(updateError(error))
+      dispatch(isUpdating(false))
+      if (error.response.status === 401) {
+        toastMessage()
+        history.push('/login')
+      }
     }
   }
 }
@@ -109,10 +124,16 @@ export const createOrder = (values, history) => {
       dispatch(isCreating(true))
       const { data } = await axios.post(`${baseURl}/orders/`, { ...values })
       dispatch(createSuccess(data.data))
+      dispatch(isCreating(false))
       history.push(`/orders/${data.data.uid}`)
     } catch (error) {
-      console.log({ error })
+      notify.show('Please work', 'error')
       dispatch(createError(error))
+      dispatch(isCreating(false))
+      if (error.response.status === 401) {
+        toastMessage()
+        history.push('/login')
+      }
     }
   }
 }

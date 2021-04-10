@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pagination = ({ ordersPerPage, totalOrders, paginate }) => {
+const Pagination = ({ ordersPerPage, totalOrders, paginate, currentPage }) => {
   const pageNumers = []
 
   for (let i = 1; i <= Math.ceil(totalOrders / ordersPerPage); i += 1) {
@@ -9,10 +9,13 @@ const Pagination = ({ ordersPerPage, totalOrders, paginate }) => {
 
   return (
     <nav aria-label="Page navigation">
-      <ul className="pagination justify-content-center mb-5">
+      <ul className="pagination pagination-md justify-content-center mb-5">
         {pageNumers.map(num => {
           return (
-            <li className="page-item" key={num}>
+            <li
+              className={num === currentPage ? 'page-item active' : 'page-item '}
+              key={num}
+            >
               <button
                 type="button"
                 onClick={() => paginate(num)}
