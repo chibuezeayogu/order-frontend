@@ -15,9 +15,9 @@ export const loginSuccess = user => ({
   payload: user
 })
 
-export const loginError = error => ({
+export const loginError = message => ({
   type: actionTypes.SIGN_IN_ERROR,
-  error
+  payload: message
 })
 
 export const isSigningOut = value => ({
@@ -48,10 +48,18 @@ export const login = (email, password, history) => {
     )
 
     if (error) {
-      dispatch(loginError(error))
+      let message
+      if (error.code === 'auth/network-request-failed') {
+        message = 'No internet connection'
+      } else if (error.code === 'auth/user-not-found') {
+        message = 'Invalid username or password'
+      } else {
+        message = error.message
+      }
+      dispatch(loginError(message))
     } else {
-      dispatch(loginSuccess(userCredentials.user))
       setLocalStorage(userCredentials.user)
+      dispatch(loginSuccess(userCredentials.user))
       history.push('/orders')
     }
   }

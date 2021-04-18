@@ -3,11 +3,10 @@
 
   .container {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    padding: 0 15px;
+    margin: 0 auto;
   }
+
   @media (min-width: 576px) {
     .container {
       max-width: 540px; 
@@ -36,64 +35,36 @@
     margin-bottom: 1rem; 
   }
 
-  .align-items-center {
-    -webkit-box-align: center !important;
-    -ms-flex-align: center !important;
-    align-items: center !important; 
-  }
-
-  .p-4 {
-    padding: 1.5rem !important; 
-  }
-
-  .pt-4,
-  .py-4 {
-    padding-top: 1.5rem !important; 
-  }
-
-  h2, h3 {
+  h1 {
     line-height: 1.5;
     font-weight: 400;
-    font-family: "Lato", Arial, sans-serif;
-    color: #000; 
-  }
-
-  .bg-primary {
-    background-color: #344763 !important; 
-  }
-
-  .login-container {
-    padding: 7em 0; 
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: rgb(15, 15, 15); 
   }
 
   .login-wrap {
     position: relative;
     background: #fff;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
     box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); 
-  }
-
-  .login-wrap h3 {
-    font-weight: 300; 
   }
 
   .login-wrap .icon {
     width: 80px;
     height: 80px;
-    background: #1089ff;
+    background: #344763;
     border-radius: 50%;
     font-size: 30px;
     margin: 0 auto;
     margin-bottom: 10px; 
   }
-    .login-wrap .icon span {
-      color: #fff; 
+
+  .login-wrap .icon span {
+    color: #fff; 
   }
 
   .form-control {
-    height: 52px;
+    height: 50px;
     background: #fff;
     color: #000;
     font-size: 16px;
@@ -110,18 +81,10 @@
     border: 1px solid #1089ff; 
   }
 
-  .btn {
-    cursor: pointer;
-    border-radius: 40px;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    font-size: 15px; 
+  .error {
+    color: red;
+    font-family: 'Open Sans', Arial, sans-serif;
+    text-align: center;
+    padding: 10px 0;
   }
-
-  .btn.btn-primary {
-    background: #1089ff !important;
-    border: 1px solid #1089ff !important;
-    color: #fff !important; 
-  }
-
 }

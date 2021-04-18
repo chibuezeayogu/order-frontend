@@ -12,13 +12,8 @@ const SignIn = ({ history }) => {
   const password = useFormInput('')
   const dispatch = useDispatch()
   const { error, isAuthenticating } = useSelector(({ userReducer }) => userReducer)
-  const [errors, setErrors] = useState('')
 
-  useEffect(() => {
-    if (error) {
-      setErrors(error)
-    }
-  }, [error])
+  useEffect(() => {}, [dispatch])
 
   const handleSign = async event => {
     event.preventDefault()
@@ -30,17 +25,16 @@ const SignIn = ({ history }) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 text-center mb-5">
-            <h1 className="heading-section">Welcome Back</h1>
+            <h1>Login</h1>
           </div>
         </div>
         <div className="row justify-content-center">
           <div className="col-md-7 col-lg-5">
-            <div className="login-wrap p-4 p-md-5">
-              <div className="icon d-flex align-items-center justify-content-center btn-loading">
-                <i className="fa fa-user-o" />
+            <div className="login-wrap p-2 p-md-3">
+              <div className="icon d-flex justify-content-center">
+                <i className="fa fa-user" />
               </div>
-              <h3 className="text-center mb-4">Sign In</h3>
-              <form onSubmit={handleSign} className="login-form">
+              <form onSubmit={handleSign} className="login-form pt-5">
                 <div className="form-group">
                   <TextInput {...email} text="Email" />
                 </div>
@@ -50,7 +44,9 @@ const SignIn = ({ history }) => {
                 <div className="form-group">
                   <ButtonWithLoading text="Login" loading={isAuthenticating} />
                 </div>
-                {errors && <span>errors</span>}
+                <div className="row justify-content-center error">
+                  {error && error}
+                </div>
               </form>
             </div>
           </div>
