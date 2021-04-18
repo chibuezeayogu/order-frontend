@@ -3,17 +3,18 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import firebaseConfig from './config'
 
+const auth = firebase.initializeApp(firebaseConfig).auth();
+
 class FirebaseAuthService {
 
-  constructor() {
-    this.firebase = firebase.initializeApp(firebaseConfig)
+  constructor(auth) {
+    this.auth = auth
   }
 
   signInWithEmailAndPassword = async (email, password) => {
     try {
       const userCredential = await this
-        .firebase
-        .auth()
+        .auth
         .signInWithEmailAndPassword(email, password)
       return [null, userCredential]
     } catch (error) {
@@ -24,8 +25,7 @@ class FirebaseAuthService {
   signOut = async () => {
     try {
       await this
-        .firebase
-        .auth()
+        .auth
         .signOut()
       
       return [null]
@@ -33,9 +33,6 @@ class FirebaseAuthService {
       return [error]
     }
   }
-
-  onAuthStateChanged = async() => this.firebase.auth().onAuthStateChanged;
-  auth = () => this.firebase.auth();
 }
 
-export default new FirebaseAuthService()
+export default new FirebaseAuthService(auth)

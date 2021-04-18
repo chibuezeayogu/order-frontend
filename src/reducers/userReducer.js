@@ -16,7 +16,8 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         currentUser: action.payload,
         isAuthenticated: !isEmpty(action.payload),
-        isAuthenticating: false
+        isAuthenticating: false,
+        error: ''
       }
     case actionTypes.SIGN_OUT_SUCCESS:
       return {
@@ -30,13 +31,13 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: false,
         currentUser: {},
-        error: action.error.message,
+        error: action.payload,
         isAuthenticating: false
       }
     case actionTypes.SIGN_OUT_ERROR:
       return {
         ...state,
-        error: action.payload.error.message
+        error: action.payload
       }
     case actionTypes.SIGNING_IN:
       return {

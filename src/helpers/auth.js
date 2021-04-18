@@ -8,7 +8,7 @@ import { notify } from 'react-notify-toast'
 import axios from 'axios'
 import firbaseSevice from '../firebase/index'
 import store from '../store/index'
-import { isAuthenticating, loginSuccess } from '../actions/userActions'
+import { loginSuccess, signOutSuccess } from '../actions/userActions'
 
 export const Auth = Component => props => {
   const { pathname } = props.history.location
@@ -28,18 +28,15 @@ export const Auth = Component => props => {
 }
 
 export const verifyLogin = () => {
-  firbaseSevice.onAuthStateChanged(async user => {
-    try {
+  firbaseSevice.auth.onAuthStateChanged(async user => {
+    if (user != null) {
       const idToken = await user.getIdToken()
+      console.log('i was called')
       localStorage.setItem('token', idToken)
-      store.dispatch(isAuthenticating(true))
       store.dispatch(loginSuccess(user))
-      store.dispatch(isAuthenticating(false))
-    } catch (error) {
-      store.dispatch(isSigningOut(true))
+    } else {
       store.dispatch(signOutSuccess())
-      store.dispatch(isSigningOut(false))
-      window.localStorage.removeItem('token')
+      localStorage.removeItem('token')
     }
   })
 }
@@ -58,7 +55,14 @@ export const setAuthorizationToken = () => {
   }
 }
 
-export const toastMessage = () => {
-  localStorage.removeItem('token')
-  return notify.show('Token expired. Please login to continue', 'error')
+export const toastMessage = (error, history) => {
+  if (error === undefined) {
+    return notify.show('Ensure that server is running and try again', 'error')
+  }
+
+  if (error.status === 401) {
+    localStorage.removeItem('token')
+    history.push('/login')
+    return notify.show('Token expired. Please login to continue', 'error')
+  }
 }

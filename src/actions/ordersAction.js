@@ -69,10 +69,7 @@ export const fetchOrders = history => {
       dispatch(fetchOrdersSuccess(data.data))
     } catch (error) {
       dispatch(fetchOrdersError(error))
-      if (error.response.status === 401) {
-        toastMessage()
-        history.push('/login')
-      }
+      toastMessage(error.response, history)
     }
   }
 }
@@ -86,10 +83,7 @@ export const fetchOrder = (uid, history) => {
       dispatch(fetchOrderSuccess(data.data))
     } catch (error) {
       dispatch(fetchOrderError(error))
-      if (error.response.status === 401) {
-        toastMessage()
-        history.push('/login')
-      }
+      toastMessage(error.response, history)
     }
   }
 }
