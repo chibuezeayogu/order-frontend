@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 import toJson from 'enzyme-to-json'
 import Index from '../index'
 

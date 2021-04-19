@@ -1,11 +1,11 @@
 # Order-frontend
-Order Frontend is an order management app with minimal functionality. It allows a user enter certin information and save to into the system
+Order Frontend is an order management app with minimal functionality. It allows users enter certain information like Customer detasils, Address, title, and Booking date and save it in the system.
 
 ## Features
-- Add to Order
-- View All With Pagination
-- View One
-- Update
+- Add Order
+- View All Orders With Pagination
+- View One Order
+- Update Order
 
 ## Languages
 - Javascript

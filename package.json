@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack serve --mode=development",
-    "test": "jest --config jest.config.js --coverage --passWithNoTests"
+    "test": "jest --config jest.config.js --coverage -u --passWithNoTests"
   },
   "dependencies": {
     "axios": "^0.21.1",

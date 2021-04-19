@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader Component Should render without crashing 1`] = `
+<Loader>
+  <div
+    className="text-center"
+  >
+    <div
+      className="spinner-border"
+      role="status"
+    >
+      <span
+        className="visually-hidden"
+      >
+        Loading...
+      </span>
+    </div>
+  </div>
+</Loader>
+`;

@@ -24,6 +24,9 @@
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
       "react/no-array-index-key": "off",
-      "no-multi-assign": "off"
+      "no-multi-assign": "off",
+      "react/jsx-filename-extension": "off",
+      "react/jsx-no-undef": "off",
+      "no-undef": "off"
     }
 }

@@ -9,6 +9,7 @@ const PasswordInput = ({ value, onChange }) => {
       onChange={onChange}
       id="password"
       placeholder="Password"
+      required
     />
   )
 }
