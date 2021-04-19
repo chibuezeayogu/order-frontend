@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Component should render without crashing 1`] = `
+<nav
+  aria-label="Page navigation"
+>
+  <ul
+    className="pagination pagination-md justify-content-center mb-5"
+  >
+    <li
+      className="page-item active"
+      key="1"
+    >
+      <button
+        className="page-link"
+        onClick={[Function]}
+        type="button"
+      >
+        1
+      </button>
+    </li>
+    <li
+      className="page-item "
+      key="2"
+    >
+      <button
+        className="page-link"
+        onClick={[Function]}
+        type="button"
+      >
+        2
+      </button>
+    </li>
+    <li
+      className="page-item "
+      key="3"
+    >
+      <button
+        className="page-link"
+        onClick={[Function]}
+        type="button"
+      >
+        3
+      </button>
+    </li>
+    <li
+      className="page-item "
+      key="4"
+    >
+      <button
+        className="page-link"
+        onClick={[Function]}
+        type="button"
+      >
+        4
+      </button>
+    </li>
+  </ul>
+</nav>
+`;

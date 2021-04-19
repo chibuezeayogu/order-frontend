@@ -1,8 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-undef */
 import React, { useEffect } from 'react'
 import { notify } from 'react-notify-toast'
 import axios from 'axios'
@@ -31,7 +29,6 @@ export const verifyLogin = () => {
   firbaseSevice.auth.onAuthStateChanged(async user => {
     if (user != null) {
       const idToken = await user.getIdToken()
-      console.log('i was called')
       localStorage.setItem('token', idToken)
       store.dispatch(loginSuccess(user))
     } else {
