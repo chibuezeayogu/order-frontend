@@ -36,7 +36,7 @@ const CreateOrder = props => {
         <h2>Create Order</h2>
       </div>
       <form onSubmit={handelSubmit} className="form-control">
-        <div className="create-order">
+        <div className="page-content">
           <table className="table table-striped table-hover table-responsive">
             <tbody>
               <tr>
@@ -58,13 +58,13 @@ const CreateOrder = props => {
               <tr>
                 <th>Address</th>
                 <td>
-                  <p className="center-table-content">
+                  <p className="table-content">
                     <TextInput {...street} text="Street" />
                   </p>
-                  <p className="center-table-content">
+                  <p className="table-content">
                     <TextInput {...city} text="City" />
                   </p>
-                  <p className="center-table-content">
+                  <p className="table-content">
                     <TextInput {...country} text="Country" />
                   </p>
                 </td>
@@ -72,13 +72,13 @@ const CreateOrder = props => {
               <tr>
                 <th>Customer</th>
                 <td>
-                  <p className="center-table-content">
+                  <p className="table-content">
                     <TextInput {...name} text="Name" />
                   </p>
-                  <p className="center-table-content">
+                  <p className="table-content">
                     <TextInput {...email} text="Email" />
                   </p>
-                  <p className="center-table-content">
+                  <p className="table-content">
                     <TextInput {...phone} text="Phone" />
                   </p>
                 </td>
@@ -86,7 +86,7 @@ const CreateOrder = props => {
             </tbody>
           </table>
         </div>
-        <div className="row create-btn">
+        <div className="row action-btn">
           <button type="submit" className="btn btn-primary">
             Create
           </button>

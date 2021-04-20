@@ -25,7 +25,7 @@ const OrdersList = props => {
   return (
     <div className="container">
       <Header {...props} />
-      <div className="row title mb-5">
+      <div className="row title mb-4">
         <h2>Orders</h2>
       </div>
       {isFetching ? (

@@ -23,7 +23,7 @@ const OrderDetails = props => {
       <div className="row title">
         <h2>Order Details</h2>
       </div>
-      <div className="order-details">
+      <div className="page-content">
         {isFetching ? (
           <Loader />
         ) : (
@@ -40,24 +40,24 @@ const OrderDetails = props => {
               <tr>
                 <th>Address</th>
                 <td>
-                  <p className="center-table-content">{order?.address?.street}</p>
-                  <p className="center-table-content">{order?.address?.city}</p>
-                  <p className="center-table-content">{order?.address?.country}</p>
+                  <p className="table-content">{order?.address?.street}</p>
+                  <p className="table-content">{order?.address?.city}</p>
+                  <p className="table-content">{order?.address?.country}</p>
                 </td>
               </tr>
               <tr>
                 <th>Customer</th>
                 <td>
-                  <p className="center-table-content">{order?.customer?.name}</p>
-                  <p className="center-table-content">{order?.customer?.email}</p>
-                  <p className="center-table-content">{order?.customer?.phone}</p>
+                  <p className="table-content">{order?.customer?.name}</p>
+                  <p className="table-content">{order?.customer?.email}</p>
+                  <p className="table-content">{order?.customer?.phone}</p>
                 </td>
               </tr>
             </tbody>
           </table>
         )}
       </div>
-      <div className="row edit-btn">
+      <div className="row action-btn">
         <Link to={`/orders/${order.uid}/edit`} className="btn btn-primary">
           Edit
         </Link>

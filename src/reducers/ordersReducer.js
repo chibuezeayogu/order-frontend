@@ -20,15 +20,13 @@ const ordersReducer = (state = initialState, action) => {
     case actionTypes.FETCH_ORDER_SUCCESS:
       return {
         ...state,
-        order: action.payload,
-        isFetching: false
+        order: action.payload
       }
     case actionTypes.FETCH_ORDERS_ERROR:
     case actionTypes.FETCH_ORDER_ERROR:
       return {
         ...state,
-        error: action.payload,
-        isFetching: false
+        error: action.payload
       }
     case actionTypes.UPDATE_ORDER_SUCCESS:
     case actionTypes.CREATE_ORDER_SUCCESS:

@@ -13,6 +13,7 @@ exports[`Pagination Component should render without crashing 1`] = `
     >
       <button
         className="page-link"
+        id={1}
         onClick={[Function]}
         type="button"
       >
@@ -25,6 +26,7 @@ exports[`Pagination Component should render without crashing 1`] = `
     >
       <button
         className="page-link"
+        id={2}
         onClick={[Function]}
         type="button"
       >
@@ -37,6 +39,7 @@ exports[`Pagination Component should render without crashing 1`] = `
     >
       <button
         className="page-link"
+        id={3}
         onClick={[Function]}
         type="button"
       >
@@ -49,6 +52,7 @@ exports[`Pagination Component should render without crashing 1`] = `
     >
       <button
         className="page-link"
+        id={4}
         onClick={[Function]}
         type="button"
       >

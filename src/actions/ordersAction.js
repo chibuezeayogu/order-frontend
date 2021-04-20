@@ -67,8 +67,10 @@ export const fetchOrders = history => {
       dispatch(isFetching(true))
       const { data } = await axios.get(`${baseURl}/orders`)
       dispatch(fetchOrdersSuccess(data.data))
+      dispatch(isFetching(false))
     } catch (error) {
       dispatch(fetchOrdersError(error))
+      dispatch(isFetching(false))
       toastMessage(error.response, history)
     }
   }
@@ -81,8 +83,10 @@ export const fetchOrder = (uid, history) => {
       dispatch(isFetching(true))
       const { data } = await axios.get(`${baseURl}/orders/${uid}`)
       dispatch(fetchOrderSuccess(data.data))
+      dispatch(isFetching(false))
     } catch (error) {
       dispatch(fetchOrderError(error))
+      dispatch(isFetching(false))
       toastMessage(error.response, history)
     }
   }
@@ -98,15 +102,12 @@ export const updateOrder = (uid, title, bookingDate, history) => {
         bookingDate
       })
       dispatch(updateSuccess(data.data))
-      history.push(`/orders/${uid}`)
       dispatch(isUpdating(false))
+      history.push(`/orders/${uid}`)
     } catch (error) {
       dispatch(updateError(error))
       dispatch(isUpdating(false))
-      if (error.response.status === 401) {
-        toastMessage()
-        history.push('/login')
-      }
+      toastMessage(error.response, history)
     }
   }
 }
@@ -116,7 +117,7 @@ export const createOrder = (values, history) => {
     setAuthorizationToken()
     try {
       dispatch(isCreating(true))
-      const { data } = await axios.post(`${baseURl}/orders/`, { ...values })
+      const { data } = await axios.post(`${baseURl}/orders`, { ...values })
       dispatch(createSuccess(data.data))
       dispatch(isCreating(false))
       history.push(`/orders/${data.data.uid}`)
@@ -124,10 +125,7 @@ export const createOrder = (values, history) => {
       notify.show('Please work', 'error')
       dispatch(createError(error))
       dispatch(isCreating(false))
-      if (error.response.status === 401) {
-        toastMessage()
-        history.push('/login')
-      }
+      toastMessage(error.response, history)
     }
   }
 }

@@ -18,6 +18,7 @@ const Pagination = ({ ordersPerPage, totalOrders, paginate, currentPage }) => {
             >
               <button
                 type="button"
+                id={num}
                 onClick={() => paginate(num)}
                 className="page-link"
               >
