@@ -1,6 +1,7 @@
-@import "../../../node_modules/bootstrap/scss/bootstrap.scss", 'config', 'signin', 'order-details', 'create-order';
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss", 'config', 'signin', 'page_content';
 
 body {
+  font-family: 'Open Sans', Arial, sans-serif;
   background: $gainsboro;
   margin: 0 auto;
 }
@@ -17,13 +18,9 @@ body {
 
 .logout, .btn-loading { 
   background-color: #344763 !important;
-  color: white !important;
+  color: $white !important;
 }
 
-.table-title {
-  width: 35%;
-}
-
-.table-bookingDate {
-  width: 25%;
+.header-border {
+  border-bottom: 1px solid $lightslategray !important
 }

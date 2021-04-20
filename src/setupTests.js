@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react'
-
+import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
 import { configure, mount } from 'enzyme'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
@@ -17,9 +18,12 @@ const mockComponentWithProvider = (store, children) => {
     </Provider>
   )
 }
+
+const mockAxios = new MockAdapter(axios)
 configure({ adapter: new Adapter() })
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
 global.mockStore = mockStore
 global.mockComponentWithProvider = mockComponentWithProvider
+global.mockAxios = mockAxios

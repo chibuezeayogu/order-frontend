@@ -22,4 +22,11 @@ describe('Pagination Component', () => {
     expect(wrapper.find('ul')).toHaveLength(1)
     expect(wrapper.find('li')).toHaveLength(4)
   })
+
+  it('simulte button click', () => {
+    const wrapper = setUp()
+    const button = wrapper.find('button').first()
+    button.simulate('click')
+    // expect().toHaveLength(4)
+  })
 })
